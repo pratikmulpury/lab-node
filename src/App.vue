@@ -4,6 +4,7 @@
     <div class="page-header">
         <h1>My Favorite Books</h1>
     </div>
+    <!-- TODO: make this element into a new component template -->
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Add New Books</h3>
@@ -81,7 +82,7 @@ var booksRef = db.ref('books')
 
 // export anonymous object from this module so it can be accessed by others when imported
 export default {
-    name: 'app',
+    name: 'App',
     // NOTE in a component, data must be a function that returns a NEW version of the values
     data () {
         return {
