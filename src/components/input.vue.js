@@ -16,12 +16,12 @@ Vue.use(VueFire)
 // simply creating the Vue instance does all the necessary set up, so no need to name it
 new Vue({
     // HTML element to attach Vue app
-    el: '#app',
+    el: '#input',
     // components (HTML, CSS, and JS) used by this app
     components: {
-        App,
-        input  
+        App
+        Input  
     },
     // simply render the app component as this app
-    template: '<App/>'
+    template: '<input/>'
 })
