@@ -12,11 +12,11 @@
             <form id="form" class="form-inline" @submit.prevent="addBook">
                 <div class="form-group">
                     <label for="bookTitle">Title:</label>
-                    <input type="text" id="bookTitle" class="form-control" v-model="newBookTitle">
+                    <input type="text" id="bookTitle" class="form-control" v-model="newBookInput.title">
                 </div>
                 <div class="form-group">
                     <label for="bookAuthor">Author:</label>
-                    <input type="text" id="bookAuthor" class="form-control" v-model="newBookAuthor">
+                    <input type="text" id="bookAuthor" class="form-control" v-model="newBookInput.author">
                 </div>
                 <input type="submit" class="btn btn-primary" value="Add Book">
             </form>
@@ -85,8 +85,10 @@ export default {
     // NOTE in a component, data must be a function that returns a NEW version of the values
     data () {
         return {
-            newBookTitle: '',
-            newBookAuthor: ''
+            newBookInput: {
+                title: '',
+                author: ''
+            }
         }
     },
     // connect to single Firebase resource
@@ -101,7 +103,7 @@ export default {
     methods: {
         // add book to the database after getting details from Google Books API
         addBook () {
-            this.getBookDetails(this.newBookTitle, this.newBookAuthor)
+            this.getBookDetails(this.newBookInput.title, this.newBookInput.author)
             this.resetInputValues()
         },
         // remove book from the database
@@ -133,8 +135,8 @@ export default {
         },
         // clear input form to prepare for the next entry
         resetInputValues () {
-            this.newBookTitle = ''
-            this.newBookAuthor = ''
+            this.newBookInput.title = ''
+            this.newBookInput.author = ''
         },
         // some URLs in the book data still refer to http directly instead of https, so convert them
         makeURLSecure (url) {
