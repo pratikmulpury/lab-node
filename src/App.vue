@@ -123,10 +123,10 @@ export default {
                             booksRef.push({
                                 title: title,
                                 author: author,
-                                year: '2001',                    // TODO: find book's publication date
-                                description: 'Interesting book', // TODO: find book's description
-                                url: 'http://google.com',        // TODO: find link to the book's information
-                                imgUrl: 'https://files.selar.co/product-images/2017/products/demo/preorder-physical-product-selar.co-59d1e525c3a96.jpg',              // TODO: find link to the book's thumbnail image
+                                year: '2001',                         // TODO: find book's publication date
+                                description: 'Interesting book',      // TODO: find book's description
+                                url: 'https://google.com',            // TODO: find link to the book's information
+                                imgUrl: this.makeURLSecure('http://files.selar.co/product-images/2017/products/demo/preorder-physical-product-selar.co-59d1e525c3a96.jpg'), // TODO: find link to the book's thumbnail image
                             })
                        })
                       .catch(error => console.log(error))
@@ -135,6 +135,10 @@ export default {
         resetInputValues () {
             this.newBookTitle = ''
             this.newBookAuthor = ''
+        },
+        // some URLs in the book data still refer to http directly instead of https, so convert them
+        makeURLSecure (url) {
+            return url.replace(/^http:/, 'https:')
         }
     }
 }
